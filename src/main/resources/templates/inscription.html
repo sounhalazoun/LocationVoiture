@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="templateUser"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Welcome</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" th:href="@{/css/main.css}" />
+</head>
+<body>
+   <div layout:fragment="content">
+       <div class="inscription">
+            <form th:action="@{signUp}" method="POST" th:object="${client}">
+                <div>
+                    <label>Nom:</label>  <span class="danger" th:errors="*{nom}"></span>
+                    <input type="text" name="nom" th:value="*{nom}"/>
+                </div>
+                 <div>
+                    <label>Prénom: </label> <span class="danger" th:errors="*{prenom}"></span>
+                    <input type="text" name="prenom" th:value="*{prenom}"/>
+                   
+                </div>
+                 <div>
+                    <label>CIN: </label> <span class="danger" th:errors="*{cin}"></span>
+                    <input type="text" name="cin" th:value="*{cin}"/>
+                    
+                </div>
+                 <div>
+                    <label>Tel: </label>  <span class="danger" th:errors="*{tel}"></span>
+                    <input type="tel" name="tel" th:value="*{tel}"/>
+                   
+                </div>
+                <div>
+                    <label>E-mail: </label>  <span class="danger" th:errors="*{email}"></span>
+                    <input type="email" name="email" th:value="*{email}"/>
+                   
+                </div>
+                <div>
+                    <label>Choisissez votre mot de passe : </label> <span class="danger" th:errors="*{password}"></span>
+                    <input type="password" name="password"/>
+                   
+                </div>
+                <div>
+                    <label>Confirmez votre mot de passe :  </label><span class="danger" th:text="${passwordNotEquals}"></span>
+                    <input type="password" name="passwordConfirm"/>
+                   
+                </div>
+                <div>
+                    <select name="role">
+                        <option th:each="r:${roles}" th:text="${r.roles}" th:value="${r.roles}" ></option>
+                    </select>
+                </div>
+                <button type="submit">S'inscrire</button>
+            </form>
+       </div>
+   </div>
+</body>
+</html>

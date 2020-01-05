@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="templateManager"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Welcome</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+</head>
+<body>
+   <div layout:fragment="content">
+       <table class="tab">
+           <thead>
+              <th>Client</th>
+               <th>Voiture</th>
+               <th>Date Debut</th>
+               <th>Date Fin</th>
+               <th>Date Demande</th>
+               <th>Validation</th>
+              
+           </thead>
+           <tr th:each="d:${demandes}">
+               <td th:text="${d.client.nom}"></td>
+               <td th:text="${d.voiture.marque}"></td>
+               <td th:text="${d.dateDebut}"></td>
+               <td th:text="${d.dateFin}"></td>
+               <td th:text="${d.dateDemande}"></td>
+               <td>
+                   <div>
+                        <a th:href="@{/manager/accepter(clientId=${d.client.id},voitureId=${d.voiture.id})}">Accepter</a>
+                   </div>
+                   <div>
+                         <a th:href="@{/manager/refuser(clientId=${d.client.id},voitureId=${d.voiture.id},dateDebut=${d.dateDebut})}">Refuser</a>
+                   </div>
+                  
+                </td>
+           </tr>
+
+       </table>
+      
+   </div>
+</body>
+</html>

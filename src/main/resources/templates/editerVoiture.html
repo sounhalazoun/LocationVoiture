@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="templateManager"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Welcome</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+</head>
+<body>
+   <div layout:fragment="content">
+
+       <div class="inscription">
+            <form th:action="@{/manager/ajouterVoiture}" method="POST" th:object="${voiture}">
+               <div>
+                    <label>Id:</label>  
+                    <input type="text" th:field="*{id}" readonly="readonly"/>
+                </div>
+                <div>
+                    <label>Marque: </label> <span class="danger" th:errors="*{marque}"></span>
+                    <input type="text" th:field="*{marque}"/>
+                    
+                </div>
+                <div>
+                    <label>Moteur: </label>  <span class="danger" th:errors="*{moteur}"></span>
+                    <input type="text" th:field="*{moteur}"/>
+                   
+                </div>
+                <div>
+                    <label>Prix : </label> <span class="danger" th:errors="*{prix}"></span>
+                    <input type="text" th:field="*{prix}"/>
+                   
+                </div>      
+				 <div >
+                     <label >Image</label><span class="danger" th:errors="*{image}"></span>
+				      <input type="file"  th:field="*{image}"/>
+				      
+				 </div>
+                <div>
+                    <label>Age Min : </label> <span class="danger" th:errors="*{ageMin}"></span>
+                    <input type="text" th:field="*{ageMin}"/>
+                   
+                </div>
+                <div>
+                    <label>Permis Min : </label> <span class="danger" th:errors="*{permisMin}"></span>
+                    <input type="text" th:field="*{permisMin}"/>
+                   
+                </div>
+                 <div>
+                    <label>Nombre de Passagers : </label> <span class="danger" th:errors="*{nbrPassager}"></span>
+                    <input type="text" th:field="*{nbrPassager}"/>
+                   
+                </div>
+                <div>
+                    <label>Nombre de Portes  : </label> <span class="danger" th:errors="*{nbrPorte}"></span>
+                    <input type="text" th:field="*{nbrPorte}"/>
+                   
+                </div>
+                <div>
+                    <label>Nombre de Valises  : </label> <span class="danger" th:errors="*{nbrValise}"></span>
+                    <input type="text" th:field="*{nbrValise}"/>
+                   
+                </div>
+                <div>
+                    <label>Boite de vitesse  : </label> <span class="danger" th:errors="*{boiteVitesse}"></span>
+                    <input type="text" th:field="*{boiteVitesse}"/>
+                   
+                </div>
+                <div>
+                    <label>Climatisation  : </label> <span class="danger" th:errors="*{climat}"></span>
+                    <input type="radio" th:field="*{climat}" value="true" checked> oui
+                    <input type="radio" th:field="*{climat}" value="false"> non
+                   
+                </div>
+                <div>
+                    <label>Franchise Accident : </label> <span class="danger" th:errors="*{franchiseAccident}"></span>
+                    <input type="text" th:field="*{franchiseAccident}"/>
+                   
+                </div>
+                <div>
+                    <label>Franchise Vol : </label> <span class="danger" th:errors="*{franchiseVol}"></span>
+                    <input type="text" th:field="*{franchiseVol}"/>
+                   
+                </div>
+               <div>
+                    <label>Caution : </label> <span class="danger" th:errors="*{caution}"></span>
+                    <input type="text" th:field="*{caution}"/>
+                   
+                </div>
+                <div>
+                    <label>Description : </label> <span class="danger" th:errors="*{description}"></span>
+                    <textarea th:field="*{description}" rows="3" style="padding:5px; width: 100%" placeholder="description.."></textarea>
+                </div>
+                <div>
+                     <label>Catégorie : </label>
+                    <select th:field="*{categorie}">
+                        <option th:each="cat:${categories}" th:text="${cat.nomCat}" th:value="${cat.id}"  ></option>
+                    </select>
+                </div>
+               
+                <button type="submit">Editer</button>
+            </form>
+       </div>
+      
+   </div>
+</body>
+</html>

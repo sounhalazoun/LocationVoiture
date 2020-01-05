@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Welcome</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" th:href="@{/css/main.css}" />
+</head>
+<body>
+    <header>
+        <div class="logo">
+                <a  href="/" title="Aller à l'accueil du site Hertz">
+                <img th:src="@{/images/logo.png}" alt="Location de voitures au Maroc"/>
+                </a>
+                <h4>Location de voitures au Maroc</h4>
+        </div>
+        <div class="nav">
+            <a href="#" class="active">Home</a>
+            <a href="#">Nos Voiture</a>
+            <a href="#">Contact</a>
+            <div th:if="${#httpServletRequest.remoteUser}" style="float:right; margin-right: 20px;">
+                    <a th:href="@{/perform_logout}" th:text="${#httpServletRequest.remoteUser}+'(logout)'"></a>
+            </div>
+            <div th:unless="${#httpServletRequest.remoteUser}" style="float:right; margin-right: 20px;" class="dropdown">
+                    <a th:href="@{/user/signUp}">S'inscrire</a>
+                     <a th:href="@{/user/login}">Login</a>
+            </div>
+                  
+        </div>
+        
+    </header>
+    <div class="row">
+        <div class="column side">
+            <ul class="navHome">
+                <li><a th:href="@{/manager/ajouterVoiture}">Ajouter une Voiture</a></li>
+                <li><a th:href="@{/manager/suppEditVoiture}">Supprimer/Editer une Voiture</a></li>
+                <li><a th:href="@{/manager/demandes}">Locations Demandées</a></li>
+            </ul>
+        </div>
+        <div class="column middle" layout:fragment="content">
+
+        </div>
+        <div class="column side">
+
+        </div>
+    </div>
+
+</body>
+</html>

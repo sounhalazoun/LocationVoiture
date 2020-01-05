@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="templateManager"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Welcome</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+</head>
+<body>
+   <div layout:fragment="content">
+       <table class="tab">
+           <thead>
+              <th>Marque</th>
+               <th>Moteur</th>
+               <th>Prix</th>
+               <th>Image</th>
+               <th>Age minimum</th>
+               <th>Caution</th>
+               <th>Franchise Accident</th>
+               <th>Franchise Vol</th>
+               <th>Permis minimum</th> 
+               <th>Editer</th>
+               <th>Supprimer</th>           
+           </thead>
+           <tr th:each="v:${ListVoiture}">
+               <td th:text="${v.marque}"></td>
+               <td th:text="${v.moteur}"></td>
+               <td th:text="${v.prix}"></td>
+               <td><img alt="image" th:src="'../images/'+${v.image}" style="width:60px"/></td>
+               <td th:text="${v.ageMin}"></td>
+               <td th:text="${v.caution}"></td>
+               <td th:text="${v.franchiseAccident}"></td>
+               <td th:text="${v.franchiseVol}"></td>
+               <td th:text="${v.permisMin}"></td>
+               <td><a th:href="@{/manager/editer(id=${v.id})}" class="edit">Editer</a></td>
+               <td ><a onclick="return confirm('Etes vous sûre ?')" th:href="@{/manager/supprimer(id=${v.id})}" class="delete">Supprimer</a></td>
+           </tr>
+
+       </table>
+      
+   </div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="templateUser"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" th:href="@{/css/main.css}" />
+</head>
+<body>
+   <div layout:fragment="content">
+       <div class="inscription">
+            <form th:action="@{/performLogin}" method="POST">
+                <p th:text="${errorMessage}" class="danger"></p>
+                <div>
+                    <label>E-mail: </label>  <span class="danger"></span>
+                    <input type="email" placeholder="email" name="username"/>
+                </div>
+                <div>
+                    <label>Choisissez votre mot de passe : </label> <span class="danger"></span>
+                    <input type="password"  placeholder="password" name="password"/>
+                   
+                </div>
+                <button type="submit">Login</button>
+            </form>
+       </div>
+   </div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="template"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Welcome</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" th:href="@{/css/main.css}" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <div layout:fragment="content">
+       
+        <div class="containerVoiture row">
+            
+            <h2 th:text="${listeVoitures.get( 0 ).categorie.descripCat} "></h2>
+            <div  class="blocVoiture column" th:each="v:${listeVoitures}">
+
+                <h3 th:text="${v.marque}+' ou similaire'"></h3>
+                <div class="imageVoiture">
+                    <a th:href="@{/client/detailsVoiture(id=${v.id})}" title="text">
+                        <img th:src="'../images/'+${v.image}"/>
+                    </a>
+                     <h1 th:text="${v.moteur}" style="text-align:center; color:#666666;"></h1>
+                     <div class="icon">
+                                <i th:title="'Nombre de passagers : ' + ${v.nbrPassager}" class="fas fa-users fa-lg"><span th:text="${v.nbrPassager}"></span></i>
+                                <i th:title="'Nombre de portes : ' + ${v.nbrPorte}" class="fas fa-car fa-lg"><span th:text="${v.nbrPorte}"></span></i>
+                                       <i th:title="(${v.categorie.nomCat}=='utilitaires')?('Volume coffre  : '+ ${v.nbrValise} + 'm<sup>3</sup>'):('Nombre de valises : ' + ${v.nbrValise})"
+                                    th:class="(${v.categorie.nomCat}=='utilitaires')?'fas fa-cubes fa-lg':'fas fa-suitcase fa-lg'">
+                                <span th:text="(${v.categorie.nomCat}=='utilitaires')?(${v.nbrValise} + ' m3'):(${v.nbrValise})" ></span>
+                                </i>
+                                <i th:title="'Boite de vitesse ' + (${v.boiteVitesse}=='M'?'manuelle':'automatique') " 
+                                class="fas fa-map-pin fa-lg"><span th:text="${v.boiteVitesse}"></span></i>
+                                <i title="Climatisation" class="far fa-snowflake fa-lg"  th:style="${v.climat}?'display:inline;':'display:none;'"></i>
+                                <i title="GPS intégré" class="fa fa-map-marker fa-lg"  th:style="${v.gps}?'display:inline;':'display:none;'"></i>
+                            </div>
+
+                </div>
+                <a th:href="@{/client/detailsVoiture(id=${v.id})}" title="text">
+                    Réserver ce véhicule
+                </a>
+            </div>
+
+        </div>
+        <div>
+                           <a class="linkButton" th:href="@{/client/home}" >« Retour aux types catégories</a>
+
+        </div>
+    </div>
+</body>
+
+</html>

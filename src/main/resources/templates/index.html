@@ -1,0 +1,101 @@
+<!DOCTYPE >
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="templateUser"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Welcome</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+</head>
+<body>
+   <div  layout:fragment="content">
+       
+        <div class="containerVoiture" >
+            <h2>Location de Véhicules au Maroc</h2>
+            <div class="blocVoiture column">
+
+                <h3>Citadines & compactes</h3>
+                <div class="imageVoiture">
+                    <a th:href="@{/client/categorie(cat='citadines-compactes')}" title="Découvrez tous nos véhicules de location de la catégorie Citadines & compactes">
+                        <img th:src="@{/images/citadines-compactes_HMA.jpg}"/>
+                    </a>
+                    <p>Idéales pour se faufiler en ville mais aussi aptes à prendre la route sans trop de bagages</p>
+                </div>
+                <a th:href="@{/client/categorie(cat='citadines-compactes')}" title="Découvrez tous nos véhicules de location de la catégorie Citadines & compactes">plus
+                    de détails</a>
+            </div>
+
+            <div class="blocVoiture column">
+
+                <h3>Suv et 4wd</h3>
+                <div class="imageVoiture">
+                    <a th:href="@{/client/categorie(cat='suv-4x2-4x4')}" title="Découvrez tous nos véhicules de location de la catégorie Suv et 4wd">
+                        <img th:src="@{/images/suv-et-4wd_HMA.jpg}" />
+                    </a>
+                    <p>Cross-Over ou Tout Terrain, idéals pour sortir des sentiers battus en alliant le plaisir et la
+                        performance</p>
+                </div>
+                <a th:href="@{/client/categorie(cat='suv-4x2-4x4')}" title="Découvrez tous nos véhicules de location de la catégorie Suv et 4wd">plus de détails</a>
+            </div>
+
+
+            <div class="blocVoiture column" >
+
+                <h3>Green collection</h3>
+
+                <div class="imageVoiture">
+                    <a th:href="@{/client/categorie(cat='green-collection')}" title="Découvrez tous nos véhicules de location de la catégorie Green collection">
+                        <img th:src="@{/images/green-collection_HMA.jpg}" />
+                    </a>
+                    <p>Découvrez notre gamme de voiture de location écologique. Dotés d'un moteur hybride, ses
+                        véhicules consomment très peu de carburant et émettent très peu de CO2.</p>
+                </div>
+                <a th:href="@{/client/categorie(cat='green-collection')}" title="Découvrez tous nos véhicules de location de la catégorie Green collection">plus de
+                    détails</a>
+            </div>
+            <div class="blocVoiture column">
+                <h3>Premium</h3>
+
+                <div class="imageVoiture">
+                    <a th:href="@{/client/categorie(cat='premium')}" title="Découvrez tous nos véhicules de location de la catégorie Premium">
+                        <img th:src="@{/images/premium_HMA.jpg}"/>
+                    </a>
+                    <p>Vivez une expérience unique avec la gamme PREMIUM! Conçue spécialement pour les amateurs du
+                        prestige, confort et plaisir!</p>
+                </div>
+                <a th:href="@{/client/categorie(cat='premium')}" title="Découvrez tous nos véhicules de location de la catégorie Premium">plus de détails</a>
+            </div>
+            <div class="blocVoiture column">
+
+                <h3>Familiale et minibus</h3>
+
+                <div class="imageVoiture">
+                    <a th:href="@{/client/categorie(cat='familiale-et-minibus')}" title="Découvrez tous nos véhicules de location de la catégorie Familiale et minibus">
+                        <img th:src="@{/images/familiale-et-minibus_HMA.jpg}" />
+                    </a>
+                    <p>Indispensables pour des voyages en famille, ne négligez pas l'espace et le confort pour vos
+                        trajets</p>
+                </div>
+                <a th:href="@{/client/categorie(cat='familiale-et-minibus')}" title="Découvrez tous nos véhicules de location de la catégorie Familiale et minibus">plus
+                    de détails</a>
+            </div>
+            <div class="blocVoiture column">
+
+                <h3>Utilitaires</h3>
+
+                <div class="imageVoiture">
+                    <a th:href="@{/client/categorie(cat='utilitaires')}" title="Découvrez tous nos véhicules de location de la catégorie Utilitaires">
+                        <img th:src="@{/images/utilitaires_HMA.jpg}" />
+                    </a>
+                    <p>Une gamme de véhicules utilitaires pour vous accompagner dans vos besoins professionnels</p>
+                </div>
+                <a th:href="@{/client/categorie(cat='utilitaires')}" title="Découvrez tous nos véhicules de location de la catégorie Utilitaires">plus de
+                    détails</a>
+            </div>
+
+        </div>
+
+    </div>
+</body>
+</html>

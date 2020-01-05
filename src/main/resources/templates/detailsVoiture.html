@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="template"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Welcome</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" th:href="@{/css/main.css}" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+</head>
+
+<body>
+    <div layout:fragment="content">
+
+      <h2 class="info-titre" th:text="'Louer une voiture ' + ${voiture.marque}+' ou similaire au Maroc' "></h2>
+
+        <div class="info row">
+   
+                <div class="infoImg column">
+                           
+                    <h3 th:text="${voiture.marque}+' ou similaire'"></h3>
+                    
+                            <img th:src="'../images/'+${voiture.image}"  width="100%" />
+                            <div class="icon">
+                                <i th:title="'Nombre de passagers : ' + ${voiture.nbrPassager}" class="fas fa-users fa-lg"><span th:text="${voiture.nbrPassager}"></span></i>
+                                <i th:title="'Nombre de portes : ' + ${voiture.nbrPorte}" class="fas fa-car fa-lg"><span th:text="${voiture.nbrPorte}"></span></i>
+                                
+                                <i th:title="(${voiture.categorie.nomCat}=='utilitaires')?('Volume coffre  : '+ ${voiture.nbrValise}):('Nombre de valises : ' + ${voiture.nbrValise})"
+                                    th:class="(${voiture.categorie.nomCat}=='utilitaires')?'fas fa-cubes fa-lg':'fas fa-suitcase fa-lg'">
+                                <span  th:class="(${voiture.categorie.nomCat}=='utilitaires')?util:normal"  th:text="${voiture.nbrValise}" ></span>
+                                </i>
+                
+                                
+                                <i th:title="'Boite de vitesse ' + (${voiture.boiteVitesse}=='M'?'manuelle':'automatique') " 
+                                class="fas fa-map-pin fa-lg"><span th:text="${voiture.boiteVitesse}"></span></i>
+                                <i title="Climatisation" class="far fa-snowflake fa-lg"  th:style="${voiture.climat}?'display:inline;':'display:none;'"></i>
+                                 <i title="GPS intégré" class="fa fa-map-marker fa-lg"  th:style="${voiture.gps}?'display:inline;':'display:none;'"></i>
+                            </div>
+                           
+                          
+                    <a class="reserverJs" th:href="@{/client/reserver(id=${voiture.id},dateDebut=${dateDebut},dateFin=${dateFin})}"
+                        title="text">
+                        RESERVER
+                    </a>
+                </div>
+                <div class="infoText column">
+                    
+                         <div>
+                             <i class="fa fa-caret-right fa-lg"></i>
+                             <span th:text="'Catégorie: '+ ${voiture.categorie.nomCat}"></span>
+                         </div>
+                        <div>
+                             <i class="fa fa-caret-right fa-lg"></i>
+                            
+                                 <span th:text="'Moteur: '+ ${voiture.moteur}"></span>
+                         </div>
+                         <div>
+                             <i class="fa fa-caret-right fa-lg"></i>
+                             <span th:text="'Âge minimum : '+ ${voiture.ageMin}"></span>
+
+                         </div>
+                         <div>
+                             <i class="fa fa-caret-right fa-lg"></i>
+                            <span th:text="'Année de permis minimum: '+ ${voiture.permisMin}"></span>
+
+                         </div>
+                         
+                         <div>
+                             <i class="fa fa-caret-right fa-lg"></i>
+                            <span th:text="'Franchise accident: '+ ${voiture.franchiseAccident}"></span>
+
+                         </div>
+                         <div>
+                             <i class="fa fa-caret-right fa-lg"></i>
+                            <span th:text="'Franchise vol: '+ ${voiture.franchiseVol}"></span>
+
+                         </div>
+
+                         <div>
+                             <i class="fa fa-caret-right fa-lg"></i>
+                            <span th:text="'Caution: '+ ${voiture.caution}"></span>
+
+                         </div>   
+                                         
+                     <p th:text="${voiture.description}"></p>
+                </div>
+                
+            </div>
+                                 
+            <a class="linkButton" th:text="'<< ' + ${voiture.categorie.nomCat}" 
+         th:href="@{/client/categorie(cat=${voiture.categorie.nomCat})}" 
+         th:title="'Retour aux vehicules de type ' + ${voiture.categorie.nomCat}"></a>
+     
+        </div>
+       
+
+</body>
+
+</html>
